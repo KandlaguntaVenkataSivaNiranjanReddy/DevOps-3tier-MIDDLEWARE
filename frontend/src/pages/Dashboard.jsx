@@ -1,20 +1,30 @@
-import { useNavigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 
-export default function Dashboard(){
-  const navigate = useNavigate();
+export default function Courses(){
+
+  const courses=[
+    "Linux","Shell Scripting","Git & GitHub","Maven","Tomcat",
+    "Apache / Nginx","SonarQube","Nexus","Jenkins","Ansible",
+    "AWS","Docker","Kubernetes","Terraform","Prometheus & Grafana",
+    "DevSecOps","SRE"
+  ];
 
   return(
     <>
     <Navbar/>
     <div className="container">
-      <div className="card" style={{textAlign:"center"}}>
-        <h1>Welcome to KK FUNDA</h1>
-        <p style={{margin:"15px 0"}}>Your DevOps Learning Platform</p>
+      <h1 className="title">DevOps Master Program</h1>
 
-        <button onClick={()=>navigate("/courses")}>
-          Browse Courses
-        </button>
+      <div style={{
+        display:"grid",
+        gridTemplateColumns:"repeat(auto-fit,minmax(200px,1fr))",
+        gap:"20px"
+      }}>
+        {courses.map(c=>(
+          <div key={c} className="card" style={{textAlign:"center"}}>
+            <h3>{c}</h3>
+          </div>
+        ))}
       </div>
     </div>
     </>
